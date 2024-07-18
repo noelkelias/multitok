@@ -44,5 +44,17 @@ test_labels = dataset['test']['label']
 # test_sentences = dataset['train']['sms'][5000:]
 # test_labels = dataset['train']['label'][5000:]
 
-a,b,c,d,e,f =  bert_tokens(train_sentences, train_labels, test_sentences, test_labels)
-train_eval(a,b,c,d,e,f, 1, 10)
+X1, Y, loader, test_X1, test_Y, vocab_size =  random_tokens()
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
+
+X1, Y, loader, test_X1, test_Y, vocab_size =  bert_tokens(train_sentences, train_labels, test_sentences, test_labels)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
+
+X1, Y, loader, test_X1, test_Y, vocab_size =  lzw_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 2, 15)
+
+X1, Y, loader, test_X1, test_Y, vocab_size =  bert_lzw_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 15)
+
+X1, Y, loader, test_X1, test_Y, vocab_size =  lzw_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 10)
