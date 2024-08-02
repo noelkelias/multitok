@@ -3,8 +3,8 @@ from torch.utils.data import DataLoader
 import random
 import torch
 
-#LZW Tokenizer
-def lwx_word_encode(data, dict_values, freeze_dict, window=None):
+#MultiTok Tokenizer
+def multitok_word_encode(data, dict_values, freeze_dict, window=None):
   if window == None or window ==0:
     window=len(data)
 
@@ -41,7 +41,7 @@ def lwx_word_encode(data, dict_values, freeze_dict, window=None):
 
   return code
 
-def lzw_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
+def multitok_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
   #Create own embeddings with available unique words.
   exp1_dataX= []
   exp_dataY= []
@@ -71,7 +71,7 @@ def lzw_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 
   #Create tokens
   max_len = 0
   for i in range (len(train_sentences)):
-    vals = lwx_word_encode(train_sentences[i].split(), dict_input, False, input_window)
+    vals = multitok_word_encode(train_sentences[i].split(), dict_input, False, input_window)
     exp1_dataX.append(vals)
     exp_dataY.append([train_labels[i]])
 
@@ -152,7 +152,7 @@ def lzw_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 
 
   #Create tokens
   for i in range (len(test_sentences)):
-    sentence_tokens = lwx_word_encode(test_sentences[i].split(), dict_input, True, output_window)
+    sentence_tokens = multitok_word_encode(test_sentences[i].split(), dict_input, True, output_window)
 
     new_sentence_tokens = []
     for word in sentence_tokens:
