@@ -13,10 +13,10 @@ from sklearn.metrics import roc_curve
 import matplotlib.pyplot as plt
 from sklearn import metrics
 
-from LZW import *
+from multitok import *
 from BERT import *
-from LZW_BERT import *
-from LZW_freq import *
+from multitok_BERT import *
+from multitok_freq import *
 from random import *
 from model import *
 
@@ -50,11 +50,11 @@ train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
 X1, Y, loader, test_X1, test_Y, vocab_size =  bert_tokens(train_sentences, train_labels, test_sentences, test_labels)
 train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
 
-X1, Y, loader, test_X1, test_Y, vocab_size =  lzw_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+X1, Y, loader, test_X1, test_Y, vocab_size =  multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
 train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 2, 15)
 
-X1, Y, loader, test_X1, test_Y, vocab_size =  bert_lzw_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+X1, Y, loader, test_X1, test_Y, vocab_size =  bert_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
 train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 15)
 
-X1, Y, loader, test_X1, test_Y, vocab_size =  lzw_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+X1, Y, loader, test_X1, test_Y, vocab_size =  multitok_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
 train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 10)
