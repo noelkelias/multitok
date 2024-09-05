@@ -51,3 +51,11 @@ Our experiments focus on three mainstream text classification datasets:
 | [AG-News](https://huggingface.co/datasets/fancyzhx/ag_news) | AG is a collection of news articles annoted for their topic  |
 
 ## Usage
+The experiments can be found in the `experiments` folder. Specifically, we point users to the MultiTok tokenization implmentation found in [multitok.py](experiments/multitok.py). We demonstrate applying MultiTok tokenization on BERT tokens in [bert_multitok.py](experiments/bert_multitok.py). Additionally, we include a frequency analysis component in [multitok_freq.py](experiments/multitok_freq.py) that can be optionally added to MultiTok for improved performance. Code for a few sample tests end-to-end tests with these tokenization schemes trained on a basic [model](experiments/model.py) in [main.py](experiments/main.py).
+
+We encourage users to modify the different parameters and experiment with varying datasets to utilize MultiTok in their own pipelines.
+
+## Citation
+```
+Coming soon...
+```
