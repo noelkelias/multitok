@@ -57,5 +57,12 @@ We encourage users to modify the different parameters and experiment with varyin
 
 ## Citation
 ```
-Coming soon...
+@unpublished{elias24,
+author = {Noel Elias, Homa Esfahanizadeh, H. Kaan Kale, Sriram Vishwanath, and Muriel Medard},
+title = {MultiTok: Variable-Length Tokenization for
+Efficient LLM Training Adapted from LZW
+Compression},
+note = {Manuscript submitted for publication},
+year = {2024}
+}
 ```
