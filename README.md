@@ -1,4 +1,4 @@
-# MultiTok: Variable-Length Tokenization for Efficient LLM Training Adapted from LZW Compression
+# MultiTok: Variable-Length Tokenization for Efficient LLMs Adapted from LZW Compression
 
 MultiTok provides a novel
 variable-length tokenizer in the sense that each token can
@@ -9,7 +9,7 @@ to close to three times faster training and (iii) maintains
 performance comparable to the current state-of-the-art for tokenization [BERT](https://arxiv.org/pdf/1810.04805). Specifically, MultiTok can be used to compress repetitive words or phrases within the training data without significantly harming the model performance. We hope that Multitok can mark the beginning of using information-theoretic approaches to provide efficient, secure, and robust LLM systems.
 
 This is an implementation for our paper "MultiTok: Variable-Length Tokenization for
-Efficient LLM Training Adapted from LZW
+Efficient LLMs Adapted from LZW
 Compression" submitted to ICASSP 2025. 
 
 ```
@@ -59,7 +59,7 @@ We encourage users to modify the different parameters and experiment with varyin
 ```
 @unpublished{elias24,
     author = {Noel Elias, Homa Esfahanizadeh, H. Kaan Kale, Sriram Vishwanath, and Muriel Medard},
-    title = {MultiTok: Variable-Length Tokenization for Efficient LLM Training Adapted from LZW Compression},
+    title = {MultiTok: Variable-Length Tokenization for Efficient LLMs Adapted from LZW Compression},
     note = {Manuscript submitted for publication}, 
     year = {2024}
 }
