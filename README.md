@@ -10,7 +10,7 @@ performance comparable to the current state-of-the-art for tokenization [BERT](h
 
 This is an implementation for our paper "MultiTok: Variable-Length Tokenization for
 Efficient LLMs Adapted from LZW
-Compression" submitted to ICASSP 2025. 
+Compression" submitted to ICASSP 2025. The full paper can be accessed at [https://arxiv.org/abs/2410.21548](https://arxiv.org/abs/2410.21548).
 
 ```
 .
@@ -56,6 +56,8 @@ The experiments can be found in the `experiments` folder. Specifically, we point
 We encourage users to modify the different parameters and experiment with varying datasets to utilize MultiTok in their own pipelines.
 
 ## Citation
+The full paper can be accessed at [https://arxiv.org/abs/2410.21548](https://arxiv.org/abs/2410.21548).
+
 ```
 @unpublished{elias24,
     author = {Noel Elias, Homa Esfahanizadeh, H. Kaan Kale, Sriram Vishwanath, and Muriel Medard},
