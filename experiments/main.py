@@ -14,8 +14,10 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 
 from multitok import *
-from BERT import *
-from multitok_BERT import *
+from bert import *
+from bert_multitok import *
+from gpt2 import *
+from gpt2_multitok import *
 from multitok_freq import *
 from random import *
 from model import *
@@ -45,16 +47,19 @@ test_labels = dataset['test']['label']
 # test_labels = dataset['train']['label'][5000:]
 
 X1, Y, loader, test_X1, test_Y, vocab_size =  random_tokens()
-train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 20)
 
 X1, Y, loader, test_X1, test_Y, vocab_size =  bert_tokens(train_sentences, train_labels, test_sentences, test_labels)
-train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 30)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 20)
+
+X1, Y, loader, test_X1, test_Y, vocab_size =  gpt2_tokens(train_sentences, train_labels, test_sentences, test_labels)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 20)
 
 X1, Y, loader, test_X1, test_Y, vocab_size =  multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
-train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 2, 15)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 2, 20)
 
-X1, Y, loader, test_X1, test_Y, vocab_size =  bert_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
-train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 15)
+X1, Y, loader, test_X1, test_Y, vocab_size =  gpt2_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 20)
 
 X1, Y, loader, test_X1, test_Y, vocab_size =  multitok_freq_tokens(train_sentences, train_labels, test_sentences, test_labels, 2, 1)
-train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 10)
+train_eval(X1, Y, loader, test_X1, test_Y, vocab_size, 1, 20)

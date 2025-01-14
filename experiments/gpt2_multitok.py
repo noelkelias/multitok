@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-import random
+from transformers import AutoTokenizer
 import torch
 
 #MultiTok Tokenizer
@@ -40,50 +40,42 @@ def multitok_word_encode(data, dict_values, freeze_dict, window=None):
 
   return code
 
-def multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
-  #Create own embeddings with available unique words.
+def gpt2_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
+  tokenizer = AutoTokenizer.from_pretrained('gpt2')
+
+  #MultiTok on gpt2 embeddings?
   exp1_dataX= []
-  exp_dataY= []
+  exp1_dataY= []
 
-  #Build unique dictionary
+  #generate dictionary
+  dict_input = {}
+  for i in range (0, 50257):
+    dict_input[str(i)] = i
+
   num_words = 0
-  count = 0
-  raw_dict_input = {}
-  for sentence in train_sentences:
-    for word in sentence.split():
-      num_words += 1
-      if word not in raw_dict_input:
-        raw_dict_input[word] = count
-        count += 1
-
-  for sentence in test_sentences:
-    for word in sentence.split():
-      if word not in raw_dict_input:
-        raw_dict_input[word] = count
-        count += 1
-
-  words = list(raw_dict_input.keys())
-  random.shuffle(words)
-
-  dict_input = dict(zip(words, raw_dict_input.values()))
-
-
-  #Create tokens
-  max_len = 0
   compressed_words = 0
-  for i in range (len(train_sentences)):
-    vals = multitok_word_encode(train_sentences[i].split(), dict_input, False, input_window)
-    compressed_words += len(vals)
-    max_len = max(max_len, len(vals))
-    exp1_dataX.append(vals)
-    exp_dataY.append([train_labels[i]])
+  max_len = 0
+  for i in range(len(train_sentences)):
+    sentence_tokens = tokenizer.encode(train_sentences[i], max_length = tokenizer.model_max_length, truncation=True)
+    vals = multitok_word_encode(sentence_tokens, dict_input, False, input_window)
 
+    num_words += len(sentence_tokens)
+    compressed_words += len(vals)
+
+    max_len = max(max_len, len(vals))
+
+    exp1_dataX.append(vals)
+    exp1_dataY.append([train_labels[i]])
+
+  print(len(dict_input))
 
   #padding
   X_padded = [val + [0]*(max_len - len(val)) for val in exp1_dataX]
 
   X1 = torch.tensor(X_padded)
-  Y = torch.tensor(exp_dataY)
+  Y = torch.tensor(exp1_dataY)
+
+  # X1 = X1.to(torch.float32)
   Y = Y.to(torch.float32)
 
   loader = DataLoader(list(zip(X1, Y)), shuffle=True, batch_size=1000)
@@ -93,19 +85,21 @@ def multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, 
 
   #Evalutation
   exp1_testX = []
-  exp_testY = []
+  exp1_testY = []
 
   #Create tokens
   for i in range (len(test_sentences)):
-    sentence_tokens = multitok_word_encode(test_sentences[i].split(), dict_input, True, output_window)
+    bert_tokens = tokenizer.encode(test_sentences[i], max_length = tokenizer.model_max_length, truncation=True)
+    sentence_tokens = multitok_word_encode(bert_tokens, dict_input, True, output_window)
+    # sentence_tokens = bert_tokens
     if len(sentence_tokens) <= max_len:
       exp1_testX.append(sentence_tokens)
-      exp_testY.append([test_labels[i]])
+      exp1_testY.append([test_labels[i]])
 
   #padding
   testX_padded = [val + [0]*(max_len - len(val)) for val in exp1_testX]
 
   test_X1 = torch.tensor(testX_padded)
-  test_Y = torch.tensor(exp_testY)
+  test_Y = torch.tensor(exp1_testY)
 
   return X1, Y, loader, test_X1, test_Y, len(dict_input)
