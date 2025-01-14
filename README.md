@@ -63,6 +63,6 @@ The full paper can be accessed at [https://arxiv.org/abs/2410.21548](https://arx
     author = {Noel Elias, Homa Esfahanizadeh, H. Kaan Kale, Sriram Vishwanath, and Muriel Medard},
     title = {MultiTok: Variable-Length Tokenization for Efficient LLMs Adapted from LZW Compression},
     note = {Manuscript submitted for publication}, 
-    year = {2024}
+    year = {2025}
 }
 ```

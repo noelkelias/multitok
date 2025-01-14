@@ -144,7 +144,7 @@ def multitok_freq_tokens(train_sentences, train_labels, test_sentences, test_lab
   loader = DataLoader(list(zip(X1, Y)), shuffle=True, batch_size=1000)
 
   print("Finished Preprocessing, ", "Max Length:", max_len)
-  print("Compression Ratio: ", num_words/compressed_words ,  num_words, compressed_words)
+  print("Compression Ratio: ", compressed_words/num_words, compressed_words, num_words)
 
   #Evalutation
   exp1_testX = []
