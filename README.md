@@ -3,7 +3,7 @@
 MultiTok provides a novel
 variable-length tokenizer in the sense that each token can
 represent a variable number of sub-words. We demonstrate that MultiTok can be
-utilized as both a as both a stand-alone tokenizer and add-on to existing tokenizers.
+utilized as both a stand-alone tokenizer and an add-on to existing tokenizers.
 The advantages of MultiTok are it (i) dynamically compresses the necessary
 training data by close to 33% (ii) allows the LLM model
 to close to three times faster training and (iii) maintains
