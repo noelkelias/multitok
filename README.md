@@ -7,7 +7,7 @@ utilized as both a stand-alone tokenizer and an add-on to existing tokenizers.
 The advantages of MultiTok are it (i) dynamically compresses the necessary
 training data by close to 33% (ii) allows the LLM model
 to close to three times faster training and (iii) maintains
-performance comparable to the current state-of-the-art tokenizers [BERT](https://arxiv.org/pdf/1810.04805) and [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf). Specifically, MultiTok can be used to compress repetitive words or phrases within the training data without significantly harming the model performance. We hope that Multitok can mark the beginning of using information-theoretic approaches to provide efficient, secure, and robust LLM systems.
+performance comparable to the current state-of-the-art tokenizers [BERT](https://arxiv.org/pdf/1810.04805) and [GPT](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf). Specifically, MultiTok can be used to compress repetitive words or phrases within the training data without significantly harming the model performance. We hope that Multitok can mark the beginning of using information-theoretic approaches to provide efficient, secure, and robust LLM systems.
 
 This is an implementation for our paper "MultiTok: Variable-Length Tokenization for
 Efficient LLMs Adapted from LZW
