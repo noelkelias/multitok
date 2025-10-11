@@ -3,7 +3,7 @@ from transformers import AutoTokenizer
 import torch
 
 
-def gpt2_tokens(train_sentences, train_labels, test_sentences, test_labels):
+def gpt_tokens(train_sentences, train_labels, test_sentences, test_labels):
   tokenizer = AutoTokenizer.from_pretrained('gpt2')
 
   #Create own embeddings with available unique words.
