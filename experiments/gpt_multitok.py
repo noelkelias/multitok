@@ -40,7 +40,7 @@ def multitok_word_encode(data, dict_values, freeze_dict, window=None):
 
   return code
 
-def gpt2_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
+def gpt_multitok_tokens(train_sentences, train_labels, test_sentences, test_labels, input_window, output_window):
   tokenizer = AutoTokenizer.from_pretrained('gpt2')
 
   #MultiTok on gpt2 embeddings?
