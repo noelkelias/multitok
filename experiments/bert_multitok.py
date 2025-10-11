@@ -96,7 +96,7 @@ def bert_multitok_tokens(train_sentences, train_labels, test_sentences, test_lab
       exp1_testX.append(sentence_tokens)
       exp1_testY.append([test_labels[i]])
 
-  #padding
+  #Padding
   testX_padded = [val + [0]*(max_len - len(val)) for val in exp1_testX]
 
   test_X1 = torch.tensor(testX_padded)
