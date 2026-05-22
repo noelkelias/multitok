@@ -59,13 +59,14 @@ The experiments can be found in the `experiments` folder. Specifically, we point
 We encourage users to modify the different parameters and experiment with varying datasets to utilize MultiTok in their own pipelines.
 
 ## Citation
-The full paper can be accessed at [https://arxiv.org/abs/2410.21548](https://arxiv.org/abs/2410.21548).
+Paper accepted to ISIT 2026. 
 
 ```
-@unpublished{elias25,
-    author = {Noel Elias, Homa Esfahanizadeh, H. Kaan Kale, Sriram Vishwanath, and Muriel Medard},
+@inproceedings{elias26,
+    author = {Noel Elias and Homa Esfahanizadeh and H. Kaan Kale and Sriram Vishwanath and Muriel Medard},
     title = {MultiTok: Variable-Length Tokenization for Efficient LLMs Adapted from LZW Compression},
-    note = {Manuscript submitted for publication}, 
-    year = {2025}
+    booktitle = {ISIT 2026},
+    year = {2026},
+    note = {Accepted; preprint: https://arxiv.org/abs/2410.21548}
 }
 ```
